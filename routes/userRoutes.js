@@ -72,7 +72,7 @@ router.post('/login', (req, res) => {
           let token = jwt.sign(payload, process.env.SECRET_KEY, {
             expiresIn: 7000
           })
-          res.send(token)
+          res.send({ status: 'You have logged in successfully', token: token })
         } else {
           res.json({ error: 'User does not exist' })
         }

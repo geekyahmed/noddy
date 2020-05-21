@@ -24,11 +24,11 @@ mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: 
 
 
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.send('Noddy Authentication System')
 })
 
-app.use('/api/v1', userRoutes);
+app.use('/api/v1/', userRoutes);
 
 app.listen(config.app.port, (req, res) => {
   console.log(`Server Is Live At Port ` + config.app.port)
