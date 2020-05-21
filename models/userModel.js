@@ -2,30 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  first_name: {
-    type: String
-  },
-  last_name: {
-    type: String
+  name: {
+    type: String,
+    required: true
   },
   username: {
     type: String,
+    required: true
+
   },
-  tagline: {
-    type: String
-  },
-  bio: {
-   type: String
- },
-city: {
-  type: String
-},
-country: {
-  type: String
-},
-tags: {
-type: Array
-},
   email: {
     type: String,
     required: true
@@ -40,4 +25,4 @@ type: Array
   }
 })
 
-module.exports = User = mongoose.model('users', UserSchema)
+module.exports = User = mongoose.model('userModel', UserSchema)

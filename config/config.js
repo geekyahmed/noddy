@@ -1,10 +1,13 @@
-const config = [
-    {
-        app: {
-            port: process.env.PORT || 3000
-        },
+const config = {
+    app: {
+        port: process.env.PORT || 9000
+    },
+    //Replace With Your Config 
     db: {
-            mongoDbUrl: 'mongodb://localhost:27017/noddy'
-        }
-    }
-]
+        host: 'localhost',
+        port: 27017,
+        name: 'noddy'
+    },
+};
+
+module.exports = config;
