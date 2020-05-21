@@ -1,35 +1,12 @@
-var express = require('express')
-var cors = require('cors')
-var bodyParser = require('body-parser')
-var app = express()
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const app = express()
 const mongoose = require('mongoose')
-var port = process.env.PORT || 5000
+const Users = require('./routes/Users')
+const config = require('./config/config')
+const { db: mongoDbUrl } = config
+const connectionString = mongoDbUrl
 
-app.use(bodyParser.json())
-app.use(cors())
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-)
-
-
-const mongoURI = 'mongodb://localhost:27017/mooza'
-
-mongoose
-  .connect(
-    mongoURI,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err))
-
-var Users = require('./routes/Users')
-var Posts = require('./routes/Posts')
-
-app.use('/users', Users)
-app.use('/posts', Posts);
-
-app.listen(port, function() {
-  console.log('Server is running on port: ' + port)
-})
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then()
